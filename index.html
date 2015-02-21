@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<script src="library/angular.min.js"></script>
+	</head>
+	<body>
+		<div>
+			<label>Name:</label>
+			<input type="text" ng-model="name" placeholder="Eneter a name here">
+			<br>
+			<label>Title:</label>
+			<input type="text" ng-model="title" placeholder="Enter your Job Title here">
+			<br>
+			<label>Primary Division:</label>
+			<select name="dropdown" ng-model="primaryDivision">
+				<option value ="CLAIR Global">CLAIR Global</option>
+				<option value ="CLAIR Broadcast">CLAIR Broadcast</option>
+				<option value ="CLAIR Backline">CLAIR Backline</option>
+				<option value ="Pacifico Television Engineering">Pacifico Television Engineering</option>
+			</select>
+			<label>Primary Location:</label>
+			<select name ="locDrop" ng-model="primaryLocation">
+				<option value ="Bensalem">Bensalem</option>
+				<option value ="Burbank">Burbank</option>
+				<option value ="Cerritos">Cerritos</option>
+				<option value ="Lititz">Lititz</option>
+				<option value ="Nashville">Nashville</option>
+				<option value ="New York">New York</option>
+				<option value ="Van Nuys">Van Nuys</option>
+				<option value ="No Location">No Location</option>
+			</select>
+			<br>
+			<label>Cell Phone:</label>
+			<input type="text" ng-model="cellphone"><br>
+			<label>Office Phone:</label>
+			<input type="text" ng-model="officephone">
+		</div>
+		<div>
+			{{name}} | {{title}}<br>
+			{{primaryDivision}} | {{primaryLocation}}<br>
+			c: {{cellphone}} | p: {{officephone}}
+		</div>
+	</body>
+</html>
