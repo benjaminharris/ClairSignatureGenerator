@@ -1,12 +1,17 @@
 <!doctype html>
 <html ng-app>
 	<head>
-		<script src="library/angular.min.js"></script>
+		<script src="library/angular/angular.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap-theme.min.css">
+		<script src="library/js/siggen.js"></script>
 	</head>
 	<body>
-		<div>
+		<div class="panel panel-default">
+  <div class="panel-heading">Please fill out the following form</div>
+  <div class="panel-body">
 			<label>Name:</label>
-			<input type="text" ng-model="name" placeholder="Eneter a name here">
+			<input type="text" ng-model="name" placeholder="Enter a name here">
 			<br>
 			<label>Title:</label>
 			<input type="text" ng-model="title" placeholder="Enter your Job Title here">
@@ -18,6 +23,7 @@
 				<option value ="CLAIR Backline">CLAIR Backline</option>
 				<option value ="Pacifico Television Engineering">Pacifico Television Engineering</option>
 			</select>
+			<br>
 			<label>Primary Location:</label>
 			<select name ="locDrop" ng-model="primaryLocation">
 				<option value ="Bensalem">Bensalem</option>
@@ -30,15 +36,17 @@
 				<option value ="No Location">No Location</option>
 			</select>
 			<br>
+			<div ng-controller = "Ctrl">
 			<label>Cell Phone:</label>
-			<input type="text" ng-model="cellphone"><br>
+			<input type="text" ng-model="phoneNumber" bg-bind="phoneNumber | tel"></div><br>
 			<label>Office Phone:</label>
 			<input type="text" ng-model="officephone">
+  			</div>
 		</div>
 		<div>
 			{{name}} | {{title}}<br>
 			{{primaryDivision}} | {{primaryLocation}}<br>
-			c: {{cellphone}} | p: {{officephone}}
+			c: {{ phoneNumber | tel }}| p: {{officephone}}
 		</div>
 	</body>
 </html>
