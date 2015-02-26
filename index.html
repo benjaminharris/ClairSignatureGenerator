@@ -11,11 +11,19 @@
 		<script type="text/javascript" src="library/bootstrap/js/bootstrap.min.js"></script>
 		<script src="library/fv/js/formValidation.min.js"></script>
 		<script src="library/fv/js/framework/bootstrap.min.js"></script>
-		<script src="library/js/siggen.js?1004"></script>
+		<script src="library/js/siggen.js?1016"></script>
 		<style>
 		.sigResult {
 		    font-family: "Calibri", sans-serif;
 		    font-size: 11pt;
+		}
+		#logo {
+			width: 100%; 
+			overflow: hidden;
+		}
+		#logoimage {
+			width: 50px;
+			float: left;
 		}
 		</style>
 		<script>
@@ -32,19 +40,20 @@
 	<body>
 	<div class="container">
 	<div class="row">
-		<div class="panel panel-default">
-		<div class="panel-body">
-		  <div ="header"><img src="http://letsknownow.org/siggen/clairlogo_v4.gif"></div>
+		<div class="panel panel-default" style="width: 100%; overflow: hidden; padding: 3px;">
+		<div class="panel-body" style="display: table-row;">
+		  <div id="header" style="width: 50px; display: table-cell;"><img src="http://letsknownow.org/siggen/clairlogo_v4.gif"></div>
+		  <div id="title" style="font-family: 'Calibri' sans-serif; display: table-cell; text-align: center; width: 100%; font-weight: bold; font-size: 14pt;">Email Signature Generator</div>
 		 </div>
 		 </div>
-	</div>
-	<div class="row">
-
-
+	 		<div class="panel panel-default">
+			<div class="panel-heading">Instructions/Notes</div>
+			<div class="panel-body">Use the form below to generate a Clair standard email signautre. After generating your signature, you can copy and paste it into your email application.<br><br><b>iPhone/iPad Users Please Note:</b> After copying and pasting your signature into the signature screen, SHAKE the iphone to display the undo formatting window and select "Undo".  This will keep formatting consistent with other platforms and devices.</div>
+			</div>
 		  <div class="panel panel-default">
 		  <div class="panel-heading">Please fill out the following form</div>
 		  <div class="panel-body">
-		  			<form id="signatureForm">
+		  			<form id="signatureForm" action="javascript:generateSig(this.form);">
 		  			<div class="form-group">
 						<label>Name:</label>
 						<div class="input-group">
@@ -69,7 +78,7 @@
 					<div class="form-group">
 						<label>Primary Division:</label>
 						<div class="input-group">
-							<select name="division">
+							<select name="division" class="form-control">
 								<option value ="CLAIR Global">CLAIR Global</option>
 								<option value ="CLAIR Broadcast">CLAIR Broadcast</option>
 								<option value ="CLAIR Backline">CLAIR Backline</option>
@@ -81,7 +90,8 @@
 					<div class="form-group">
 						<label>Primary Location:</label>
 						<div class="input-group">
-							<select name ="yourlocation">
+							<select id="yourlocation" name ="yourlocation" onChange="defphone();" class="form-control">
+								<option></option>
 								<option value ="Lititz">Lititz</option>
 								<option value ="Bensalem">Bensalem</option>
 								<option value ="Burbank">Burbank</option>
@@ -106,7 +116,7 @@
 						<label>Office Phone:</label>
 						<div class="input-group">
 							<div class="input-group-addon">+1</div>
-							<input type="text" name="officephone" class="form-control">
+							<input type="text" id="officephone" name="officephone" class="form-control">
 						</div>
 					</div>
 
@@ -124,16 +134,12 @@
 				        </div>
 					</div>
 
-					<INPUT type="button" NAME="process" VALUE="Generate Signature" onClick="generateSig(this.form)" class="btn btn-default"></INPUT>
+					<button type="submit" NAME="process" VALUE="Generate Signature" onClick="generateSig(this.form)" class="btn btn-default">Generate Signature</button>
 					</form>
 		  			</div>
 				</div>
 				<div id="result"></div>
-				<div class="panel panel-default">
-				<div class="panel-heading">Installation Instructions</div>
-				<div class="panel-body">After generating your signature, you can copy and paste it into your email application.<br><br><b>iPhone/iPad Users Please Note:</b> After copying and pasting your signature into the signature screen, SHAKE the iphone to display the undo formatting window and select "Undo".  This will keep formatting consistent with other platforms and devices.</div>
-				</div>
-			</div>	
+				
 		</div>
 	</body>
 
@@ -169,6 +175,13 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'A job title is required'
+                    }
+                }
+            },
+            yourlocation: {
+                validators: {
+                    notEmpty: {
+                        message: 'An office location is required.  If none are applicable, select Lititz.'
                     }
                 }
             },

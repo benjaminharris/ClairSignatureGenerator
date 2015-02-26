@@ -1,5 +1,5 @@
 function generateSig(form){
-	var name = toTitleCase(form.yourname.value);
+	var name = form.yourname.value;
 	var jobtitle = toTitleCase(form.jobtitle.value);
 	var division = form.division.value;
 	var location = form.yourlocation.value;
@@ -9,7 +9,7 @@ function generateSig(form){
 	var email = form.email.value;
 
 	var website;
-	var gmaps;
+	var gmaps = "#";
 
 	switch(location) {
 		case "Lititz":
@@ -124,4 +124,38 @@ function numberFormat(number) {
 	}
 
 	return number;
+}
+
+function defphone() {
+	if (document.getElementById("yourlocation").value != ""){
+	var phone;
+		switch(document.getElementById("yourlocation").value) {
+		case "Lititz":
+			phone = "7176264000";
+			break;
+		case "Bensalem":
+			phone = "2152451313";
+			break;
+		case "Burbank":
+			phone = "8185669706";
+			break;
+		case "Cerritos":
+			phone = "5622291550";
+			break;
+		case "Nashville":
+			phone = "6152276657";
+			break;
+		case "New York":
+			phone = "9146646002";
+			break;
+		case "Van Nuys":
+			phone = "8187872226";
+			break;
+		case "No Location":
+			phone = "#"
+			break;
+	}
+	console.log(phone);
+	document.getElementById("officephone").value = phone;
+}
 }
