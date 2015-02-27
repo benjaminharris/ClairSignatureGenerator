@@ -152,7 +152,7 @@ function defphone() {
 			phone = "8187872226";
 			break;
 		case "No Location":
-			phone = "#"
+			phone = ""
 			break;
 	}
 	console.log(phone);

@@ -5,20 +5,20 @@
 		<meta content="utf-8" http-equiv="encoding">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap-theme.min.css">	
+		<link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="library/fv/css/formValidation.min.css">
 		<script type="text/javascript" src="library/jquery.min.js"></script>
 		<script type="text/javascript" src="library/bootstrap/js/bootstrap.min.js"></script>
 		<script src="library/fv/js/formValidation.min.js"></script>
 		<script src="library/fv/js/framework/bootstrap.min.js"></script>
-		<script src="library/js/siggen.js?1016"></script>
+		<script src="library/js/siggen.js?1017"></script>
 		<style>
 		.sigResult {
 		    font-family: "Calibri", sans-serif;
 		    font-size: 11pt;
 		}
 		#logo {
-			width: 100%; 
+			width: 100%;
 			overflow: hidden;
 		}
 		#logoimage {
@@ -134,12 +134,12 @@
 				        </div>
 					</div>
 
-					<button type="submit" NAME="process" VALUE="Generate Signature" onClick="generateSig(this.form)" class="btn btn-default">Generate Signature</button>
+					<input type="button" NAME="process" VALUE="Generate Signature" onClick="generateSig(this.form)" class="btn btn-default"></input>
 					</form>
 		  			</div>
 				</div>
 				<div id="result"></div>
-				
+
 		</div>
 	</body>
 
@@ -188,6 +188,6 @@ $(document).ready(function() {
         }
     });
 });
+
 </script>
 </html>
-
