@@ -58,7 +58,8 @@ function generateSig(form){
 	var signature
 
 	if (email != "") {
-		signature = ("<a href='mailto:") + email + ("'>") + name + ("</a>");
+		//signature = ("<a href='mailto:") + email + ("'>") + name + ("</a>");
+		signature = name;
 	} else {
 		signature = name;
 	}
@@ -72,13 +73,15 @@ function generateSig(form){
 	if (name != "" || jobtitle != ""){
 		signature = signature + ("<br>");
 	}
-	signature = signature + ("<a href='") + website + ("'>") + division + ("</a>");
+	//signature = signature + ("<a href='") + website + ("'>") + division + ("</a>");
+	signature = signature + division;
 
 	if (location != "" && location != "No Location") {
 		if (division != "") {
 			signature = signature + (" | ");
 		}
-		signature = signature + ("<a href='") + gmaps + ("'>") + location + ("</a>");
+		//signature = signature + ("<a href='") + gmaps + ("'>") + location + ("</a>");
+		signature = signature + location;
 	}
 
 	signature = signature + ("<br>");
@@ -98,6 +101,11 @@ function generateSig(form){
 		}
 		signature = signature + ("d: ") + directphone;
 	}
+	
+	if (email !=""){
+		signature = signature + ("<br>e: ") + email;
+	}
+	
 
 	if (form.legal.checked == true){
 		signature = signature + ("<br><br>This email and any attachments may contain privileged and confidential information and are solely for the use of the sender's intended recipient(s). If you received this email in error, please notify the sender by reply email and delete all copies and attachments. Thank you.");
